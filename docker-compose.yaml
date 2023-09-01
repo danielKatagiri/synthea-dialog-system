@@ -1,0 +1,15 @@
+version: '3.7'
+
+services:
+  db:
+    container_name: postgres
+    restart: always
+    image: postgres:15.4-bullseye
+    environment:
+      POSTGRES_PASSWORD: root
+      POSTGRES_USER: root
+    ports:
+      - "5321:5321"
+    volumes:
+      - "./synthea_dialog_system/database/schema.sql:/docker-entrypoint-initdb.d/1.sql"
+    network_mode: "host"
